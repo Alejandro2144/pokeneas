@@ -11,6 +11,12 @@ const pokeneas = [
         altura: "0.7 m",
         habilidad: "Espesura",
     },
+    {
+        id: 3,
+        nombre: "Bulbasaur",
+        altura: "0.7 m",
+        habilidad: "Espesura",
+    },
     
 ];
 
