@@ -1,3 +1,4 @@
+const os = require('os');
 const { pokeneasData, length } = require('../models/pokeneas.js');
 
 function getRandomPokeneaIndex() {
@@ -19,15 +20,18 @@ function getPokeneaData(index) {
 function getRandomPokeneaJSON(req, res) {
     const randomIndex = getRandomPokeneaIndex();
     const data = getPokeneaData(randomIndex);
-    res.json(data);
+    const containerId = os.hostname();
+    res.json({ ...data, containerId });
 }
 
 function getRandomPokeneaInfo(req, res) {
     const randomIndex = getRandomPokeneaIndex();
     const pokenea = getPokeneaData(randomIndex);
+    const containerId = os.hostname();
     res.send(`
-        <img src="/images/${pokenea.imagen}" alt="${pokenea.nombre}">
+        <img src="${pokenea.imagen}" alt="${pokenea.nombre}" width="30%">
         <p>${pokenea.fraseFilosofica}</p>
+        <p>ID del contenedor: ${containerId}</p>
     `);
 }
 
